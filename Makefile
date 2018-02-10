@@ -16,7 +16,6 @@ CFLAGS	=	-Wall -Wextra -fPIC -Iinclude
 SRC	=	src/show_alloc_mem.c \
 		src/handle.c \
 		src/free.c \
-		src/calloc.c \
 		src/malloc.c \
 		src/first_block.c \
 		src/realloc.c
@@ -25,6 +24,9 @@ OBJ	=	$(SRC:.c=.o)
 
 $(NAME)	:	$(OBJ)
 		$(CC) -Wall -Wextra -fPIC $(OBJ) -shared -o $(NAME)
+
+test: $(OBJ)
+		$(CC) -Wall -Wextra main.c $(OBJ) -o testMain
 
 all	:	$(NAME)
 
